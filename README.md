@@ -65,3 +65,44 @@ Shortcut to the local players head for cutscene purposes. Example:
 rcm.TE_SPELL_DIAGLOGUE("U SUCK", rcm.L_PLAYER ,2)
 --rcm.L_PLAYER is used in place of an object, will use the players head.
 ```
+
+## Example Cutscene
+
+You can find an example cutscene in this place:
+https://www.roblox.com/games/511939243/FPS-Test
+
+The script is as follows...
+
+```
+
+local rcm = require(game:GetService('ReplicatedStorage').Modules.CutsceneModule)
+
+game.Workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable
+rcm.L_PANCAMERA_QUEUE(workspace.alexi, workspace.tah, 2)
+rcm.L_PANCAMERA_QUEUE(workspace.tah, workspace.alexi, 5)
+
+
+rcm.L_CUTCAMERA_QUEUE(workspace.Noob.Head,2,1, false)
+rcm.TE_SPELL_DIAGLOGUE("U SUCK", workspace.Noob.Head,2)
+
+
+rcm.L_CUTCAMERA_QUEUE(workspace.Noob2.Head,2,1, true)
+rcm.TE_SPELL_DIAGLOGUE("no u", workspace.Noob2.Head,2)
+
+
+rcm.L_CUTCAMERA_QUEUE(workspace["Void Protector"]["Void Guard"].Head,false,2,1, true)
+rcm.TE_SPELL_DIAGLOGUE("U BOTH SUCK", workspace["Void Protector"]["Void Guard"].Head ,3)
+rcm.L_ZOOM_QUEUE(40,3, true, 2)
+rcm.TE_SPELL_DIAGLOGUE("ok im sorry", workspace["Void Protector"]["Void Guard"].Head ,3)
+
+
+rcm.L_PANCAMERA_QUEUE(workspace["Void Protector"]["Void Guard"].Head,workspace.Noob2.Head, 2)
+rcm.FN_CUTSCENE_D()
+
+rcm.L_CAMERA_PLAYALLQUEUE()
+
+wait(1)
+
+rcm.EF_FADE_OUT(3)
+rcm.FN_CUTSCENE_D()
+```
