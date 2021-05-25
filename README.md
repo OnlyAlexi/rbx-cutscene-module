@@ -33,3 +33,9 @@ rcm.TE_SPELL_DIAGLOGUE("U SUCK", rcm.L_PLAYER ,2)
 -- Afterwards, it waits "time" before going to the next action
 ```
 
+### rcm.L_ZOOM_QUEUE(zoom_amount, time_before_next_action, reset_fov, time_before_resetting_zoom)
+```
+rcm.L_ZOOM_QUEUE(40,3, true, 1)
+-- Zooms in by decreasing the cameras FOV by 40, waiting a second before resetting it to default.
+-- Then waiting 3 seconds before moving to the next camera action.
+```
