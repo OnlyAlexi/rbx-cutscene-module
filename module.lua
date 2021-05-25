@@ -1,8 +1,13 @@
 local H_CUTSCENE = {}
 
 RS_S = game:GetService("RunService").RenderStepped
+
 DIALOGUE_UI = game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.Dialogue
+
 pcall(function()local starterGui=game:GetService('StarterGui');starterGui:SetCore("TopbarEnabled",false)end)
+
+H_CUTSCENE.L_PLAYER = game:GetService("Players").LocalPlayer.Character.Head
+H_CUTSCENE.ENABLE_BLACK_BARS = true
 
 
 H_CUTSCENE.Me = 1
@@ -25,9 +30,9 @@ H_CUTSCENE.L_ZOOM_QUEUE = function(amount, t, boolr, p)
 	table.insert(H_CUTSCENE.L_CAMERA_MOVEMENTS, T_PASSED)
 end
 
-H_CUTSCENE.L_CUTCAMERA_QUEUE = function(x,pb,t,d, dialog)
+H_CUTSCENE.L_CUTCAMERA_QUEUE = function(x,t,d, dialog)
 	local ORG_CFRAME=H_CUTSCENE.L_CAMERA.CFrame;local TRG_CFRAME=x.CFrame
-	local C_CUT_OBJ = {x,pb,t,d, dialog}
+	local C_CUT_OBJ = {x,false,t,d, dialog}
 	table.insert(H_CUTSCENE.L_CAMERA_MOVEMENTS,C_CUT_OBJ)
 end
 
@@ -67,11 +72,17 @@ H_CUTSCENE.EF_FADE_OUT = function(t)
 		DIALOGUE_UI.Parent.Fade.Transparency=DIALOGUE_UI.Parent.Fade.BackgroundTransparency-i
 		RS_S:wait() 
 	end
+	wait(t)
+	DIALOGUE_UI.Parent.Fade.Transparency=1
 end
 
 H_CUTSCENE.FN_CUTSCENE_D = function()
+	
 	H_CUTSCENE.L_CAMERA.CameraSubject=game:GetService("Players").LocalPlayer.Character.Humanoid;H_CUTSCENE.L_CAMERA.CameraType=Enum.CameraType.Custom
-	DIALOGUE_UI.Parent.BlackBar.Visible=false;DIALOGUE_UI.Parent.TextLabel.Visible=false;DIALOGUE_UI.Visible=false
+	
+	if(H_CUTSCENE.ENABLE_BLACK_BARS == true) then
+		DIALOGUE_UI.Parent.BlackBar.Visible=false;DIALOGUE_UI.Parent.TextLabel.Visible=false;DIALOGUE_UI.Visible=false
+		end
 end
 
 H_CUTSCENE.PERFORM_ZOOM = function(tablee)
@@ -80,20 +91,22 @@ H_CUTSCENE.PERFORM_ZOOM = function(tablee)
 		H_CUTSCENE.L_CAMERA.FieldOfView = H_CUTSCENE.L_CAMERA.FieldOfView - 1.5
 		RS_S:wait()
 	end
-	wait(tablee[4])
+	wait(tablee[2])
 	if(tablee[3] == true) then
 		for i = 0,tablee[1],1 do
 			H_CUTSCENE.L_CAMERA.FieldOfView = H_CUTSCENE.L_CAMERA.FieldOfView + 1
 			RS_S:wait()
 		end
 	end
-	wait(tablee[2])
+	wait(tablee[4])
 	--H_CUTSCENE.L_CAMERA.FieldOfView = DEFAULT_FOV
 end
 
 
 H_CUTSCENE.L_CAMERA_PLAYALLQUEUE = function()
-	DIALOGUE_UI.Parent.BlackBar.Visible=true;DIALOGUE_UI.Parent.TextLabel.Visible=true
+	if(H_CUTSCENE.ENABLE_BLACK_BARS == true) then
+		DIALOGUE_UI.Parent.BlackBar.Visible=true;DIALOGUE_UI.Parent.TextLabel.Visible=true
+	else end
 	for i,v in pairs (H_CUTSCENE.L_CAMERA_MOVEMENTS) do
 	if(type(v) == "userdata") then 
 	v:Play();v.Completed:Wait()
