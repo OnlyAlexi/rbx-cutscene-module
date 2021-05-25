@@ -10,7 +10,7 @@ A seperate function is then used to run the queue and one by one, each camera mo
 ## Documentation
 
 
-### rcm.L_PANCAMERA_QUEUE(original_instance, new_instance, time)
+### rcm.L_PANCAMERA_QUEUE(original_instance, new_instance, time_before_next_action)
 Places a camera-pan movement into the queue, on execution of the movement the camera will pan from "original_instance" to "new_instance" and take "time" to complete the movement.
 ```
 rcm.L_PANCAMERA_QUEUE(workspace.Malenz.Head, workspace.Part, 2) 
@@ -26,14 +26,14 @@ rcm.L_CUTCAMERA_QUEUE(workspace.Noob.Head,2,1, false)
 -- The last argument should be set to false if you have dialogue after the cut.
 ```
 
-### rcm.TE_SPELL_DIAGLOGUE(text, instance, time)
+### rcm.TE_SPELL_DIAGLOGUE(text, instance, time_before_next_action)
 ```
 rcm.TE_SPELL_DIAGLOGUE("U SUCK", rcm.L_PLAYER ,2)
 -- Places a textbox above the given instance (in this case, the local players head) and types it out
 -- Afterwards, it waits "time" before going to the next action
 ```
 
-### rcm.L_ZOOM_QUEUE(zoom_amount, time_before_next_action, reset_fov, time_before_resetting_zoom)
+### rcm.L_ZOOM_QUEUE(zoom_amount, time_before_resetting_zoom, reset_fov, time_before_next_action)
 ```
 rcm.L_ZOOM_QUEUE(40,3, true, 1)
 -- Zooms in by decreasing the cameras FOV by 40, waiting a second before resetting it to default.
