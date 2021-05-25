@@ -26,3 +26,10 @@ rcm.L_CUTCAMERA_QUEUE(workspace.Noob.Head,2,1, false)
 -- The last argument should be set to false if you have dialogue after the cut.
 ```
 
+### rcm.TE_SPELL_DIAGLOGUE(text, instance, time)
+```
+rcm.TE_SPELL_DIAGLOGUE("U SUCK", rcm.L_PLAYER ,2)
+-- Places a textbox above the given instance (in this case, the local players head) and types it out
+-- Afterwards, it waits "time" before going to the next action
+```
+
