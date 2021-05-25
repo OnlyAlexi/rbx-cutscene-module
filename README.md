@@ -54,4 +54,12 @@ rcm.EF_FADE_OUT(3)
 
 ## Variables/Configuration
 
-### [bool] rcm.ENABLE_BLACK_BARS
+#### rcm.ENABLE_BLACK_BARS
+If set to true, black cinematic bars will appear at the bottom and top of the screen during cutscenes.
+These are removed when the FN_CUTSCENE_D function is used.
+
+#### rcm.L_PLAYER
+Shortcut to the local players head for cutscene purposes. Example:
+```rcm.TE_SPELL_DIAGLOGUE("U SUCK", rcm.L_PLAYER ,2)
+--rcm.L_PLAYER is used in place of an object, will use the players head.
+```
