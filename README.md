@@ -13,5 +13,16 @@ A seperate function is then used to run the queue and one by one, each camera mo
 ### rcm.L_PANCAMERA_QUEUE(original_instance, new_instance, time)
 Places a camera-pan movement into the queue, on execution of the movement the camera will pan from "original_instance" to "new_instance" and take "time" to complete the movement.
 ```
-rcm.L_PANCAMERA_QUEUE(workspace.Malenz.Head, workspace.Part, 2) -- Will pan from the given players head to the part at a speed relative to 2 seconds.
+rcm.L_PANCAMERA_QUEUE(workspace.Malenz.Head, workspace.Part, 2) 
+-- Will pan from the given players head to the part at a speed relative to 2 seconds.
 ```
+
+
+### rcm.L_CUTCAMERA_QUEUE(instance, time_before_next_action, offset, instant)
+```
+rcm.L_CUTCAMERA_QUEUE(workspace.Noob.Head,2,1, false)
+-- Will cut the camera to the given "Noobs" head and then wait 2 seconds before the next action
+-- The camera will be placed 1 stud away from the front-face (can be configured to other faces)
+-- The last argument should be set to false if you have dialogue after the cut.
+```
+
