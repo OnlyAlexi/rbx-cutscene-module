@@ -39,3 +39,19 @@ rcm.L_ZOOM_QUEUE(40,3, true, 1)
 -- Zooms in by decreasing the cameras FOV by 40, waiting a second before resetting it to default.
 -- Then waiting 3 seconds before moving to the next camera action.
 ```
+### rcm.FN_CUTSCENE_D()
+```
+rcm.FN_CUTSCENE_D()
+-- Ends the cutscene, sets the camera-subject back to local player.
+-- Clears the queue-table allowing room for the next cutscene.
+```
+
+### rcm.EF_FADE_OUT(time_before_removal)
+```
+rcm.EF_FADE_OUT(3)
+-- After fading out will wait 3 seconds before removing the black-screen.
+```
+
+## Variables/Configuration
+
+### [bool] rcm.ENABLE_BLACK_BARS
