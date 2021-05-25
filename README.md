@@ -12,3 +12,6 @@ A seperate function is then used to run the queue and one by one, each camera mo
 
 ### rcm.L_PANCAMERA_QUEUE(original_instance, new_instance, time)
 Places a camera-pan movement into the queue, on execution of the movement the camera will pan from "original_instance" to "new_instance" and take "time" to complete the movement.
+```
+rcm.L_PANCAMERA_QUEUE(workspace.Malenz.Head, workspace.Part, 2) -- Will pan from the given players head to the part at a speed relative to 2 seconds.
+```
