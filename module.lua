@@ -17,10 +17,10 @@ H_CUTSCENE.L_CAMERA = workspace.CurrentCamera;H_CUTSCENE.L_CAMERA.CameraType=Enu
 
 
 H_CUTSCENE.L_PANCAMERA_QUEUE = function(o,x,t,easingStyle)
-	local OR_C_SUBJECT=H_CUTSCENE.L_CAMERA.CameraSubject
+	--local OR_C_SUBJECT=H_CUTSCENE.L_CAMERA.CameraSubject
 	local C_OFFSET_L=x.CFrame:VectorToWorldSpace(Vector3.FromNormalId("Front"))
 	local OR_CFRAME_C = o.CFrame;local T_CFRAME_C = CFrame.new(x.Position+6*C_OFFSET_L, x.Position)
-	H_CUTSCENE.L_CAMERA.CFrame = OR_CFRAME_C 
+	--H_CUTSCENE.L_CAMERA.CFrame = OR_CFRAME_C 
 	local C_TWEEN_OBJ = game:GetService('TweenService'):Create(H_CUTSCENE.L_CAMERA,TweenInfo.new(t),{CFrame = T_CFRAME_C})
 	table.insert(H_CUTSCENE.L_CAMERA_MOVEMENTS,C_TWEEN_OBJ)
 end
@@ -77,9 +77,7 @@ H_CUTSCENE.EF_FADE_OUT = function(t)
 end
 
 H_CUTSCENE.FN_CUTSCENE_D = function()
-	
 	H_CUTSCENE.L_CAMERA.CameraSubject=game:GetService("Players").LocalPlayer.Character.Humanoid;H_CUTSCENE.L_CAMERA.CameraType=Enum.CameraType.Custom
-	
 	if(H_CUTSCENE.ENABLE_BLACK_BARS == true) then
 		DIALOGUE_UI.Parent.BlackBar.Visible=false;DIALOGUE_UI.Parent.TextLabel.Visible=false;DIALOGUE_UI.Visible=false
 		end
@@ -99,7 +97,6 @@ H_CUTSCENE.PERFORM_ZOOM = function(tablee)
 		end
 	end
 	wait(tablee[4])
-	--H_CUTSCENE.L_CAMERA.FieldOfView = DEFAULT_FOV
 end
 
 
@@ -128,7 +125,7 @@ H_CUTSCENE.L_CAMERA_PLAYALLQUEUE = function()
 							H_CUTSCENE.PERFORM_ZOOM(v)
 						end
 					end 
-					end
+				end
 			end
 		end
 	end
